@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>���恣���</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="is-preload">
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+
+            <!-- Header -->
+
+            <header id="header">
+                <strong></strong>
+                <marquee direction="left" height="30" scrollamount="5" style="color:red;"></marquee>
+            </header>
+
+
+            <br> <br>
+            <h3>商品一覽</h3>
+            <div class="col-12">
+                <ul class="actions">
+                    <li><a href="commodityAdd" class="button small">新增商品</a></li>
+                </ul>
+            </div>
+            <div class="table-wrapper">
+
+                <table class="alt">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th class="sort"><a class="logo" href="javascript: void(0)"><strong>商品編號</strong></a></th>
+                        <th class="sort"><a class="logo" href="javascript: void(0)"><strong>商品名稱</strong></a></th>
+                        <th><strong>縮圖</strong></th>
+                        <th><strong>分類</strong></th>
+                        <th class="sort"><a class="logo" href="javascript: void(0)"><strong>單價</strong></a></th>
+                        <th class="sort"><a class="logo" href="javascript: void(0)"><strong>數量</strong></a></th>
+                        <th><strong>詳細資訊</strong></th>
+                        <th class="sort"><a class="logo" href="javascript: void(0)"><strong>規格</strong></a></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr th:each="allCommodity:${allCommodity}">
+                        <td style="vertical-align: middle;"><a href="javascript: deleteItem('<%=commHrefForDel%>')"><i class="fa fa-trash"></i></a></td>
+                        <td style="vertical-align: middle;" th:text="${allCommodity.id}"></td>
+                        <td style="vertical-align: middle;"><a class="logo" th:href="@{'/commodityUpdate/'+${allCommodity.id}}"><strong th:text="${allCommodity.name}"> </strong></a></td>
+                        <td style="width: 123px; height: 124px;"><a
+                                href="" class="image"><img th:src="@{${allCommodity.image}}"
+                                                           alt="commodityIMG" height="100" /></a></td>
+                        <td style="vertical-align: middle;" th:text="${allCommodity.category}"></td>
+                        <td style="vertical-align: middle;" th:text="${allCommodity.price}"></td>
+                        <td style="vertical-align: middle;" th:text="${allCommodity.quantity}"></td>
+
+                        <td style="vertical-align: middle;width: 100px;" th:text="${allCommodity.detail}"></td>
+                        <td style="vertical-align: middle;" th:text="${allCommodity.spec}"></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <div class="inner">
+
+            <!-- Search -->
+            <section>
+                <header>
+                    <h2>Shop</h2>
+                </header>
+            </section>
+
+            <!-- Menu -->
+            <nav id="menu">
+                <header class="major">
+                    <h2>Menu</h2>
+                </header>
+                <ul>
+                    <li><a href="/">回首頁</a></li>
+                    <li><a href="commodity">瀏覽商品</a></li>
+					<li th:if="${isLogin == true}"><a href="member">會員管理</a></li>
+                    <li th:if="${isLogin == true}"><a href="logout">登出</a></li>
+                    <li th:if="${isLogin == false}"><a href="login">會員登入</a></li>
+					<li th:if="${isLogin == false}"><a href="register">會員註冊</a></li>
+                </ul>
+            </nav>
+
+            <!-- Footer -->
+            <footer id="footer">
+
+                <p class="copyright">&copy; Untitled. All rights reserved.</p>
+            </footer>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- Scripts -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/browser.min.js"></script>
+<script src="/js/breakpoints.min.js"></script>
+<script src="/js/util.js"></script>
+<script src="/js/main.js"></script>
+<script>
+
+    function getCellValue(row, index) {
+        return $(row).children('td').eq(index).text();
+    }
+    function deleteItem(id){
+        var r = confirm("雿Ⅱ摰�������");
+        if(r){
+            window.location.replace(id);
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+com\shop\DAO\MemberDAO.class
+com\shop\DAO\CommodityDAO.class
+com\shop\Model\AccountBean.class
+com\shop\Controller\UserController.class
+com\shop\ServletInitializer.class
+com\shop\Model\CommodityBean.class
+com\shop\ShopApplication.class
+com\shop\Controller\WebController.class
+com\shop\Controller\CommodityController.class
