@@ -1,6 +1,9 @@
 package com.shop.DAO;
 
 import com.shop.Model.CommodityBean;
+
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -11,15 +14,15 @@ import org.springframework.transaction.annotation.Transactional;
 public interface CommodityDAO extends JpaRepository<CommodityBean,Long> {
 
     @Query(value = "SELECT * FROM commodity WHERE id=?",nativeQuery = true)
-    public CommodityBean findCommodityById(int id);
+    public CommodityBean findCommodityById(Long id);
 
     @Query(value = "SELECT * FROM commodity",nativeQuery = true)
-    public CommodityBean findAllCommodity();
+    public List<CommodityBean> findAllCommodity();
 
     @Modifying
     @Transactional
     @Query(value = "UPDATE commodity SET name=?, category=?, price=?, quantity=?, detail=?, spec=?, image=? WHERE id=?",nativeQuery = true)
-    void update(String name,String category,int price, int quantity,String detail,String spec,String image,int id);
+    void update(String name,String category,int price, int quantity,String detail,String spec,String image,Long id);
 
     @Modifying
     @Transactional

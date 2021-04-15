@@ -1,7 +1,7 @@
 package com.shop.Controller;
 
-import com.shop.DAO.CommodityDAO;
 import com.shop.Model.MemberBean;
+import com.shop.Service.CommodityService;
 import com.shop.Service.MemberService;
 import com.shop.Model.CommodityBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +18,9 @@ import java.util.List;
 public class WebController {
 
 	@Autowired
-	private CommodityDAO commodityDAO;
-	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private CommodityService commodityService;
 
 
 	@RequestMapping("/")
@@ -70,7 +70,7 @@ public class WebController {
 
 	@GetMapping("/commodity")
 	public String commodity(HttpSession session,Model model) {
-		List<CommodityBean> allCommodity = commodityDAO.findAll();
+		List<CommodityBean> allCommodity = commodityService.findAll();
 		model.addAttribute("allCommodity", allCommodity);
 		model.addAttribute("isLogin", memberService.isLogin(session));
 
@@ -78,8 +78,8 @@ public class WebController {
 	}
 
 	@GetMapping("/commodityDetail/{id}")
-	public String commodityDetail(@PathVariable int id,HttpSession session, Model model) {
-		CommodityBean commodityBean = commodityDAO.findCommodityById(id);
+	public String commodityDetail(@PathVariable Long id,HttpSession session, Model model) {
+		CommodityBean commodityBean = commodityService.findCommodityById(id);
 		model.addAttribute("commodity", commodityBean);
 		model.addAttribute("isLogin", memberService.isLogin(session));
 
@@ -92,8 +92,8 @@ public class WebController {
 	}
 
 	@GetMapping("/commodityUpdate/{id}")
-	public String commodityUpdate(@PathVariable int id, Model model) {
-		CommodityBean commodityBean = commodityDAO.findCommodityById(id);
+	public String commodityUpdate(@PathVariable Long id, Model model) {
+		CommodityBean commodityBean = commodityService.findCommodityById(id);
 		model.addAttribute("commodity", commodityBean);
 
 		return "commodityUpdate";
@@ -101,7 +101,7 @@ public class WebController {
 
 	@GetMapping("/commodityAdmin")
 	public String commodityAdmin(Model model) {
-		List<CommodityBean> allCommodity = commodityDAO.findAll();
+		List<CommodityBean> allCommodity = commodityService.findAll();
 		model.addAttribute("allCommodity", allCommodity);
 
 		return "commodityAdmin";

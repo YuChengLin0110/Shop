@@ -6,14 +6,15 @@ import javax.persistence.*;
 public class CommodityBean {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
 	private int price,quantity;
     
 	private String name,category,spec,detail,image;
 
-    public Long getId() {
+
+	public Long getId() {
         return id;
     }
 
@@ -76,4 +77,5 @@ public class CommodityBean {
     public void setImage(String image) {
         this.image = image;
     }
+    
 }

@@ -83,7 +83,7 @@ function registerCheck(accCheck , pwdCheck){
                         </div>
                         <div class="col-12 col-12-xsmall">
                             <input type="password" id="pwd" name="valPwd"
-                                   placeholder="密碼(4~12個字)" minlength="4" maxlength="12" required />
+                                   placeholder="密碼(4~12個字)" minlength="4" maxlength="12" oninput="checkPwd()" required />
                         </div>
                         <div class="col-12 col-12-xsmall">
                         <span id="pwdCT" style="color:red; visibility:hidden;">*密碼與確認密碼不符</span>                         
