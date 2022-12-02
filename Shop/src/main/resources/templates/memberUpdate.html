@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>修改會員資料</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+
+            <!-- Header -->
+
+            <header id="header">
+                <strong></strong>
+                <marquee direction="left" height="30" scrollamount="5" style="color:red;"></marquee>
+            </header>
+
+            <!-- Banner -->
+            <section id="banner">
+                <!-- Form -->
+                <form method="post" action="memberUpdate"
+                      onsubmit="return check_passwd()">
+                    <div th:object="${detail}" class="row gtr-uniform">
+                        <div class="col-12 col-12-xsmall">
+                            帳號:<input style="background-color: #ffe6ff;" type="text"
+                                      id="acc" name="valUser" readonly="true" th:value="*{account}"/>
+                        </div>
+                        <div class="col-12 col-12-xsmall">
+                            密碼(6~12個字):<input type="password" id="pwd" name="valPwd"
+                                              minlength="6" maxlength="12" th:value="*{password}"
+                            required />
+                        </div>
+                        <div class="col-12 col-12-xsmall">
+                            密碼確認(6~12個字):<input type="password" id="pwdC" name="valPwdCheck"
+                                                minlength="6" maxlength="12" th:value="*{password}"
+                            required />
+                        </div>
+                        <div class="col-12 col-12-xsmall">
+                            姓名:<input type="text" id="name" name="valName"
+                                      th:value="*{name}" required />
+                        </div>
+                        <div class="col-12 col-12-xsmall">
+                            地址:<input type="text" id="addr" name="valAddr"
+                                      th:value="*{addr}" required />
+                        </div>
+                        <div class="col-12 col-12-xsmall">
+                            連絡電話:<input type="text" id="tel" name="valTel"
+                                        th:value="*{tel}" required />
+                        </div>
+                        <div class="col-12 col-12-xsmall">
+                            Email:<input type="email" id="email" name="valEmail"
+                                         th:value="*{email}" required />
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-12">
+                        <ul class="actions">
+                            <li><input type="submit" value="確認修改" class="primary" /></li>
+                            <li><a href="member" class="button">會員管理</a></li>
+                        </ul>
+                    </div>
+                </form>
+                <!-- Break -->
+            </section>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <div class="inner">
+
+            <!-- Search -->
+            <section>
+                <header>
+                    <h2>Shop</h2>
+                </header>
+            </section>
+
+            <!-- Menu -->
+            <nav id="menu">
+                <header class="major">
+                    <h2>Menu</h2>
+                </header>
+                <ul>
+                    <li><a href="/">回首頁</a></li>
+                    <li><a href="product">瀏覽商品</a></li>
+                    <li th:if="${isLogin == true}"><a href="logout">登出</a></li>
+					<li th:if="${isLogin == true}"><a href="member">會員管理</a></li>
+					<li th:if="${isLogin == true}"><a href="productAdmin">商品管理</a></li>
+					<li th:if="${isLogin == true}"><a href="cart">購物車</a></li>
+					<li th:if="${isLogin == true}"><a href="order">訂單</a></li>
+					<li th:if="${isLogin == false}"><a href="login">會員登入</a></li>
+					<li th:if="${isLogin == false}"><a href="register">會員註冊</a></li>
+                </ul>
+            </nav>
+
+            <!-- Footer -->
+            <footer id="footer">
+                <div></div>
+                <p class="copyright">&copy; Untitled. All rights reserved.</p>
+            </footer>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- Scripts -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/browser.min.js"></script>
+<script src="/js/breakpoints.min.js"></script>
+<script src="/js/util.js"></script>
+<script src="/js/main.js"></script>
+<script>
+    function check_passwd(form) {
+        if (pwd.value !== pwdC.value) {
+            alert("密碼與確認密碼不符");
+            return false;
+        } else
+            return true;
+    }
+</script>
+</body>
+</html>

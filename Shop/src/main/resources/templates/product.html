@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>item</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+
+            <!-- Header -->
+
+            <header id="header">
+                
+                <marquee direction="left" height="30" scrollamount="5" style="color:red;"></marquee>
+            </header>
+            <br>
+            <div class="table-wrapper">
+
+                <table class="alt">
+                    <thead>
+                    <tr>
+                        <th class="sort"><a class="logo" href=""><strong>商品名稱</strong></a></th>
+                        <th><strong>縮圖</strong></th>
+                        <th><strong>分類</strong></th>
+                        <th class="sort"><a class="logo" href=""><strong>單價</strong></a></th>
+                        <th><strong>詳細資訊</strong></th>
+                        <th class="sort"><a class="logo" href=""><strong>規格</strong></a></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr th:each="Product:${allProduct}">
+                        <td style="vertical-align: middle;" width="120"><a class="logo" th:href="@{'/productDetail/'+${Product.id}}"><strong th:text="${Product.name}" ></strong></a></td>
+
+                        <td style="width: 123px; height: 124px;"><a
+                                href="" class="image"><img th:src="@{${Product.image}}"
+                            alt="productIMG" height="100" /></a></td>
+                        <td th:text="${Product.category}" style="vertical-align: middle;" width="70"></td>
+                        <td th:text="${Product.price}" style="vertical-align: middle;" width="50"></td>
+
+                        <td th:text="${Product.detail}" style="vertical-align: middle; width: 200px;" width="300"></td>
+                        <td th:text="${Product.spec}" style="vertical-align: middle;" width="70"></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar" >
+        <div class="inner">
+
+            <!-- Search -->
+            <section>
+                <header>
+                    <h2>Shop</h2>
+                </header>
+            </section>
+
+            <!-- Menu -->
+            <nav id="menu" >
+                <header class="major">
+                    <h2>Menu</h2>
+                </header>
+                <ul >
+                    <li><a href="/">回首頁</a></li>
+                    <li th:if="${isLogin == true}"><a href="logout">登出</a></li>
+					<li th:if="${isLogin == true}"><a href="member">會員管理</a></li>
+					<li th:if="${isLogin == true}"><a href="productAdmin">商品管理</a></li>
+					<li th:if="${isLogin == true}"><a href="cart">購物車</a></li>
+					<li th:if="${isLogin == true}"><a href="order">訂單</a></li>
+					<li th:if="${isLogin == false}"><a href="login">會員登入</a></li>
+					<li th:if="${isLogin == false}"><a href="register">會員註冊</a></li>
+					
+                </ul>
+            </nav>
+
+            <!-- Footer -->
+            <footer id="footer">
+                
+                <p class="copyright">&copy; Untitled. All rights reserved.</p>
+            </footer>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- Scripts -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/browser.min.js"></script>
+<script src="/js/breakpoints.min.js"></script>
+<script src="/js/util.js"></script>
+<script src="/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>會員資料</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+
+            <!-- Header -->
+
+            <header id="header">
+                <strong></strong>
+                <marquee direction="left" height="30" scrollamount="5" style="color:red;"></marquee>
+            </header>
+
+
+            <br><br><h3>會員資料</h3>
+            <div class="table-wrapper">
+
+                <table class="alt">
+                    <tbody>
+                    <tr>
+                        <td>帳號</td>
+                        <td th:text="${detail.account}"></td>
+                    </tr>
+                    <tr>
+                        <td>姓名</td>
+                        <td th:text="${detail.name}"></td>
+
+                    </tr>
+                    <tr>
+                        <td>地址</td>
+                        <td th:text="${detail.addr}"></td>
+
+                    </tr>
+                    <tr>
+                        <td>電話</td>
+                        <td th:text="${detail.tel}"></td>
+
+                    </tr>
+                    <tr>
+                        <td>電子郵件</td>
+                        <td th:text="${detail.email}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <a href="memberUpdate" class="button primary">修改個人資料</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <div class="inner">
+
+            <!-- Search -->
+            <section>
+                <header>
+                    <h2>Shop</h2>
+                </header>
+            </section>
+
+            <!-- Menu -->
+            <nav id="menu">
+                <header class="major">
+                    <h2>Menu</h2>
+                </header>
+                <ul>
+                
+                    <li><a href="/">回首頁</a></li>
+                    <li><a href="product">瀏覽商品</a></li>
+                    <li th:if="${isLogin == true}"><a href="logout">登出</a></li>
+					<li th:if="${isLogin == true}"><a href="member">會員管理</a></li>
+					<li th:if="${isLogin == true}"><a href="productAdmin">商品管理</a></li>
+					<li th:if="${isLogin == true}"><a href="cart">購物車</a></li>
+					<li th:if="${isLogin == true}"><a href="order">訂單</a></li>
+					<li th:if="${isLogin == false}"><a href="login">會員登入</a></li>
+					<li th:if="${isLogin == false}"><a href="register">會員註冊</a></li>
+                </ul>
+            </nav>
+
+            <!-- Footer -->
+            <footer id="footer">
+                <div></div>
+                <p class="copyright">&copy; Untitled. All rights reserved.</p>
+            </footer>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- Scripts -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/browser.min.js"></script>
+<script src="/js/breakpoints.min.js"></script>
+<script src="/js/util.js"></script>
+<script src="/js/main.js"></script>
+
+</body>
+</html>

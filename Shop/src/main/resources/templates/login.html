@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>登入會員</title>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+
+            <!-- Header -->
+
+            <header id="header"><strong>首頁>登入</strong>
+
+            </header>
+
+            <!-- Banner -->
+            <section id="banner"> <!-- Form -->
+                <form method="post" action="login">
+                    <div class="row gtr-uniform">
+                        <div class="col-12 col-12-xsmall">
+                            <input type="text" id="User" name="valUser"
+                                   placeholder="帳號" required/>
+                        </div>
+                        <div class="col-12 col-12-xsmall">
+                            <input type="password" id="Pwd" name="valPwd"
+                                   placeholder="密碼(4~12個字)" minlength="4" maxlength="12" required/>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-12">
+                        <ul class="actions">
+                            <li><input type="submit" value="登入"
+                                       class="primary" /></li>
+                            <li><input type="reset" value="清空	" /></li>
+                        </ul>
+                    </div>
+                </form>
+                <!-- Break --> </section>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <div class="inner">
+
+            <!-- Search -->
+            <section> <header>
+                <h2>Shop</h2>
+            </header> </section>
+
+            <!-- Menu -->
+            <nav id="menu">
+                <header class="major">
+                    <h2>Menu</h2>
+                </header>
+                <ul>
+                    <li><a href="/">回首頁</a></li>
+                    <li><a href="product">瀏覽商品</a></li>
+                </ul>
+            </nav>
+
+            <!-- Footer -->
+            <footer id="footer">
+                <div></div>
+                <p class="copyright">&copy; Untitled. All rights reserved.</p>
+            </footer>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- Scripts -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/browser.min.js"></script>
+<script src="/js/breakpoints.min.js"></script>
+<script src="/js/util.js"></script>
+<script src="/js/main.js"></script>
+
+</body>
+</html>
