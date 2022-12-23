@@ -1,6 +1,8 @@
 # Shop
 
 註冊、登入
+以Ajax方式驗證帳號是否已存在
+密碼經MD5加密後存入資料庫
 ![image](demonstration/registerLogin.gif)
 
 新增商品、上傳圖片
