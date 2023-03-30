@@ -1,7 +1,6 @@
 package com.shop.Controller;
 
-import com.shop.Model.MemberBean;
-import com.shop.Service.MemberService;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,7 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpSession;
+import com.shop.Model.MemberBean;
+import com.shop.Service.MemberService;
 
 @Controller
 public class MemberController {

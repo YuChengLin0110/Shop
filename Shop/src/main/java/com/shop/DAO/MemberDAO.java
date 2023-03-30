@@ -1,11 +1,12 @@
 package com.shop.DAO;
 
-import com.shop.Model.MemberBean;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.shop.Model.MemberBean;
 
 @Repository
 public interface MemberDAO extends JpaRepository<MemberBean,Long> {

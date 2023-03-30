@@ -11,7 +11,7 @@ public class ImageUploadConfig implements WebMvcConfigurer{
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/images/**").addResourceLocations("file:C:\\Users\\aa468\\Documents\\GitHub\\Shop\\Shop\\src\\main\\resources\\static\\images\\");
+		registry.addResourceHandler("/images/**").addResourceLocations("file:C:\\Users\\aa468\\Github_Shop\\Shop\\src\\main\\resources\\static\\images\\");
 	}
 	
 }

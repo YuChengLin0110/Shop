@@ -22,7 +22,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
+
 import javax.persistence.Access;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -42,7 +42,6 @@ import org.hibernate.boot.jaxb.SourceType;
 import org.hibernate.cfg.annotations.HCANNHelper;
 import org.hibernate.internal.CoreMessageLogger;
 import org.hibernate.internal.util.StringHelper;
-
 import org.jboss.logging.Logger;
 
 /**
