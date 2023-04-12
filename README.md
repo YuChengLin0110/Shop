@@ -1,5 +1,12 @@
 # Shop
 
+專案技術
+Java
+Thymeleaf、JavaScript、Jquery、AJAX
+Spring boot、Spring Security
+MySQL
+Hibernate、JPQL
+
 註冊
 以AJAX方式驗證帳號是否已存在  
 密碼經BCrypt加密後存入資料庫
