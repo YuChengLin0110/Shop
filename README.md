@@ -1,10 +1,10 @@
 # Shop
 
-專案技術
-Java
-Thymeleaf、JavaScript、Jquery、AJAX
-Spring boot、Spring Security
-MySQL
+專案技術  
+Java  
+Thymeleaf、JavaScript、Jquery、AJAX  
+Spring boot、Spring Security  
+MySQL  
 Hibernate、JPQL
 
 註冊
