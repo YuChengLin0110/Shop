@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>會員資料</title>
+    <title th:text="${pageTitle}">會員資料</title>
     <meta name="viewport"
           content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="css/main.css" />
@@ -75,17 +75,8 @@
                 <header class="major">
                     <h2>Menu</h2>
                 </header>
-                <ul>
+                <ul th:replace = "menu :: menu">
                 
-                    <li><a href="/">回首頁</a></li>
-                    <li><a href="product">瀏覽商品</a></li>
-                    <li th:if="${isLogin == true}"><a href="logout">登出</a></li>
-					<li th:if="${isLogin == true}"><a href="member">會員管理</a></li>
-					<li th:if="${isLogin == true}"><a href="productAdmin">商品管理</a></li>
-					<li th:if="${isLogin == true}"><a href="cart">購物車</a></li>
-					<li th:if="${isLogin == true}"><a href="order">訂單</a></li>
-					<li th:if="${isLogin == false}"><a href="login">會員登入</a></li>
-					<li th:if="${isLogin == false}"><a href="register">會員註冊</a></li>
                 </ul>
             </nav>
 

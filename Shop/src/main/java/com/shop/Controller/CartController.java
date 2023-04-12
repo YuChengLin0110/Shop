@@ -3,6 +3,8 @@ package com.shop.Controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +23,8 @@ public class CartController {
 	@Autowired ProductService productService;
 	@Autowired MemberService memberService;
 	
+	private static final Logger logger = LoggerFactory.getLogger(CartController.class);
+	
 	//Ajax 加入購物車
 	@PostMapping("/cartAdd")
 	@ResponseBody
@@ -30,11 +34,13 @@ public class CartController {
 		
 		//MemberBean memberBean = (MemberBean) session.getAttribute("user");
 		//String account = memberBean.getAccount();
-		
+		boolean flag = false;
 		if(cartService.add(account, pid, count)==true) {
-			return true;
+			flag = true;
+			return flag;
 		}else {
-			return false;
+			flag = false;
+			return flag;
 		}
 		
 	}
@@ -60,9 +66,8 @@ public class CartController {
 	
 	@PostMapping("/cartDelete")
 	public String delete(@RequestParam("valCartId") List<Long> cart_id) {
-		
+
 			cartService.delete(cart_id);
-		
 		
 		return "redirect:/cart";
 	}

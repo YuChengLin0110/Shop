@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title th:text="${pageTitle}">title</title>
+</head>
+<body th:fragment="menu">
+
+	<form id="logout-form" th:action="@{/logout}" method="post">
+    	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+	</form>
+
+<ul>
+	<li th:if="${isLogin == true && pageTitle !='登出'}"><a th:href="@{/logout}" 
+		onclick="event.preventDefault(); document.getElementById('logout-form').submit();">登出
+		</a>
+		</li>
+	<li th:if="${pageTitle !='Shop'}"><a href="/">首頁</a></li>	
+	<li th:if="${isLogin == true && pageTitle !='會員資料'}"><a th:href="@{/member}">會員資料</a></li>
+	<li th:if="${isLogin == true && pageTitle !='商品管理'}"><a th:href="@{/productAdmin}">商品管理</a></li>
+	<li th:if="${isLogin == true && pageTitle !='瀏覽商品'}"><a th:href="@{/product}">瀏覽商品</a></li>
+	<li th:if="${isLogin == true && pageTitle !='購物車'}"><a th:href="@{/cart}">購物車</a></li>
+	<li th:if="${isLogin == true && pageTitle !='訂單'}"><a th:href="@{/order}">訂單</a></li>
+	<li th:if="${isLogin == false && pageTitle !='會員登入'}"><a th:href="@{/login}">會員登入</a></li>
+	<li th:if="${isLogin == false && pageTitle !='會員註冊'}"><a th:href="@{/register}">會員註冊</a></li>
+</ul>
+</body>
+</html>

@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>item</title>
+    <title th:text="${pageTitle}">item</title>
     <meta name="viewport"
           content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" th:href="@{/css/main.css}" href="css/main.css" />
+<!--
+    改為使用CookieCsrfTokenRepository
+    並使用src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js"
+    從cookie取得csrf
+<meta name="_csrf" th:content="${_csrf.token}"/>
+<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+															-->
+<!-- 用此種方式取得headerName比較不會出錯 -->															
+<meta name="_csrf_header" th:content="${_csrf.headerName}"/>															
 </head>
 <body class="is-preload">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-
+<!-- 提供JavaScript 操作Cookie內數值的簡易方法 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js"></script>
 
 <!-- Wrapper -->
 <div id="wrapper">
@@ -62,16 +72,8 @@
                 <header class="major">
                     <h2>Menu</h2>
                 </header>
-                <ul>
-                    <li><a th:href="@{'/'}">回首頁</a></li>
-                    <li><a th:href="@{'/product'}">瀏覽商品</a></li>
-                    <li th:if="${isLogin == true}"><a th:href="@{'/logout'}">登出</a></li>
-					<li th:if="${isLogin == true}"><a th:href="@{'/member'}">會員管理</a></li>
-					<li th:if="${isLogin == true}"><a th:href="@{'/productAdmin'}">商品管理</a></li>
-					<li th:if="${isLogin == true}"><a th:href="@{'/cart'}">購物車</a></li>
-					<li th:if="${isLogin == true}"><a th:href="@{'/order'}">訂單</a></li>
-					<li th:if="${isLogin == false}"><a th:href="@{'/login'}">會員登入</a></li>
-					<li th:if="${isLogin == false}"><a th:href="@{'/register'}">會員註冊</a></li>
+                <ul th:replace = "menu :: menu">
+                    
                 </ul>
             </nav>
 
@@ -87,8 +89,16 @@
 
 </div>
 
+
 <!-- th:inline="javascript" 讓JS可以獲取Thymeleaf Model的值  [[${model}]] 以利下面使用-->
 <script th:inline="javascript">
+//改為使用CookieCsrfTokenRepository
+//並使用src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js"
+//從cookie取得csrf
+//Spring Security 需要在post加上csrf 以下是Ajax使用方法 -->
+//var csrfToken = $("meta[name='_csrf']").attr("content");
+var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+var csrfToken = Cookies.get('XSRF-TOKEN');
 
 var pid= [[${product.id}]];
 var account = [[${account}]];
@@ -119,6 +129,9 @@ $.ajax({
 	data:{"pid":pid,
 		  "account":account,
 		  "count":count},
+	beforeSend: function(xhr) {
+		xhr.setRequestHeader(csrfHeader, csrfToken);
+	},
 	success:function(res){
 		if(res==true){
 			alert("加入購物車");

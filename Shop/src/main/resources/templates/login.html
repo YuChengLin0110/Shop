@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>登入會員</title>
+    <title th:text="${pageTitle}">登入會員</title>
     <meta charset="utf-8" />
     <meta name="viewport"
           content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -24,14 +24,14 @@
 
             <!-- Banner -->
             <section id="banner"> <!-- Form -->
-                <form method="post" action="login">
+                <form method="post" th:action="doLogin">
                     <div class="row gtr-uniform">
                         <div class="col-12 col-12-xsmall">
-                            <input type="text" id="User" name="valUser"
+                            <input type="text" id="User" name="username"
                                    placeholder="帳號" required/>
                         </div>
                         <div class="col-12 col-12-xsmall">
-                            <input type="password" id="Pwd" name="valPwd"
+                            <input type="password" id="Pwd" name="password"
                                    placeholder="密碼(4~12個字)" minlength="4" maxlength="12" required/>
                         </div>
                     </div>
@@ -62,9 +62,8 @@
                 <header class="major">
                     <h2>Menu</h2>
                 </header>
-                <ul>
-                    <li><a href="/">回首頁</a></li>
-                    <li><a href="product">瀏覽商品</a></li>
+                <ul th:replace = "menu :: menu">
+                    
                 </ul>
             </nav>
 

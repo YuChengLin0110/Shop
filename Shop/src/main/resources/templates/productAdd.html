@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>新增商品</title>
+    <title th:text="${pageTitle}">新增商品</title>
     <meta name="viewport"
           content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="css/main.css" />
@@ -26,7 +26,7 @@
             <br> <br>
             <h3>新增商品</h3>
             <!-- Form -->
-            <form method="post" action="productAdd" enctype="multipart/form-data">
+            <form method="post" th:action="productAdd" enctype="multipart/form-data">
                 <div class="row gtr-uniform">
                     <div class="col-12 col-12-xsmall">
                         <input type="text" id="name" name="valName" placeholder="商品名稱"
@@ -34,7 +34,7 @@
                     </div>
                     <div class="col-12 col-12-xsmall">
                         <select name="valCategory" >
-                            <option value="商品分類">商品分類</option>
+                            <option value="" disabled selected>商品分類</option>
                             <option value="配件">配件</option>
                             <option value="鞋款">鞋款</option>
                             <option value="背包">背包</option>
@@ -43,11 +43,11 @@
                     </div>
                     <div class="col-12 col-12-xsmall">
                         <input type="text" name="valPrice"
-                               placeholder="商品單價" required />
+                               placeholder="商品單價" pattern="^[0-9]$" required />
                     </div>
                     <div class="col-12 col-12-xsmall">
                         <input type="text" name="valQuantity" placeholder="商品數量"
-                               required />
+                               pattern="^[0-9]$" required />
                     </div>
                     <div class="col-12 col-12-xsmall">
                         <div class="col-12">
@@ -91,16 +91,8 @@
                 <header class="major">
                     <h2>Menu</h2>
                 </header>
-                <ul>
-                    <li><a href="/">回首頁</a></li>
-                    <li><a href="product">瀏覽商品</a></li>
-                    <li th:if="${isLogin == true}"><a href="logout">登出</a></li>
-					<li th:if="${isLogin == true}"><a href="member">會員管理</a></li>
-					<li th:if="${isLogin == true}"><a href="productAdmin">商品管理</a></li>
-					<li th:if="${isLogin == true}"><a href="cart">購物車</a></li>
-					<li th:if="${isLogin == true}"><a href="order">訂單</a></li>
-					<li th:if="${isLogin == false}"><a href="login">會員登入</a></li>
-					<li th:if="${isLogin == false}"><a href="register">會員註冊</a></li>
+                <ul th:replace = "menu :: menu">
+                    
 
                 </ul>
             </nav>

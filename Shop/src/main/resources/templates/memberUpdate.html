@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>修改會員資料</title>
+    <title th:text="${pageTitle}">修改會員資料</title>
     <meta name="viewport"
           content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="css/main.css" />
@@ -25,7 +25,7 @@
             <!-- Banner -->
             <section id="banner">
                 <!-- Form -->
-                <form method="post" action="memberUpdate"
+                <form method="post" th:action="memberUpdate"
                       onsubmit="return check_passwd()">
                     <div th:object="${detail}" class="row gtr-uniform">
                         <div class="col-12 col-12-xsmall">
@@ -33,14 +33,14 @@
                                       id="acc" name="valUser" readonly="true" th:value="*{account}"/>
                         </div>
                         <div class="col-12 col-12-xsmall">
-                            密碼(6~12個字):<input type="password" id="pwd" name="valPwd"
-                                              minlength="6" maxlength="12" th:value="*{password}"
-                            required />
+                            密碼(4~12個英文數字):<input type="password" id="pwd" name="valPwd"
+                                              minlength="4" maxlength="12" th:value="*{password}"
+                            pattern="^[A-Za-z0-9]{4,12}$" required />
                         </div>
                         <div class="col-12 col-12-xsmall">
-                            密碼確認(6~12個字):<input type="password" id="pwdC" name="valPwdCheck"
-                                                minlength="6" maxlength="12" th:value="*{password}"
-                            required />
+                            密碼確認(4~12個英文數字):<input type="password" id="pwdC" name="valPwdCheck"
+                                                minlength="4" maxlength="12" th:value="*{password}"
+                            pattern="^[A-Za-z0-9]{4,12}$" required />
                         </div>
                         <div class="col-12 col-12-xsmall">
                             姓名:<input type="text" id="name" name="valName"
@@ -88,16 +88,8 @@
                 <header class="major">
                     <h2>Menu</h2>
                 </header>
-                <ul>
-                    <li><a href="/">回首頁</a></li>
-                    <li><a href="product">瀏覽商品</a></li>
-                    <li th:if="${isLogin == true}"><a href="logout">登出</a></li>
-					<li th:if="${isLogin == true}"><a href="member">會員管理</a></li>
-					<li th:if="${isLogin == true}"><a href="productAdmin">商品管理</a></li>
-					<li th:if="${isLogin == true}"><a href="cart">購物車</a></li>
-					<li th:if="${isLogin == true}"><a href="order">訂單</a></li>
-					<li th:if="${isLogin == false}"><a href="login">會員登入</a></li>
-					<li th:if="${isLogin == false}"><a href="register">會員註冊</a></li>
+                <ul th:replace = "menu :: menu">
+                    
                 </ul>
             </nav>
 

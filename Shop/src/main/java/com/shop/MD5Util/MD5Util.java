@@ -1,6 +1,8 @@
-package com.shop.MD5;
+package com.shop.MD5Util;
 import org.springframework.stereotype.Component;
 import org.springframework.util.DigestUtils;
+
+//已改為使用Spring Security管理，加密法改為BCrypt
 @Component
 public class MD5Util {
 

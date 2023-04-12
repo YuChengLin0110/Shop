@@ -59,17 +59,7 @@ public class ProductController {
                                   @RequestParam("valDetail") String detail,
                                   @RequestParam("valSpec") String spec,
                                   @RequestParam("valImage") MultipartFile file)  {
-//        String fileName = System.currentTimeMillis()+file.getOriginalFilename();
-//        String image="";
-//        try {
-//            byte[] bytes = file.getBytes();
-//            Path path = Paths.get("\"C:\\Users\\aa468\\Documents\\GitHub\\Shop\\Shop\\src\\main\\resources\\static\\images\\" + fileName);
-//            Files.write(path, bytes);
-//            image = "/images/"+fileName;
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+
     	String image = fileService.fileUpdate(file);
         productService.update(name,category,price,quantity,detail,spec,image,id);
         

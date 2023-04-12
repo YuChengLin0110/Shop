@@ -2,6 +2,8 @@ package com.shop.Service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,8 @@ public class CartService {
 	CartDAO cartDAO;
 	@Autowired 
 	ProductService productService;
+	
+	private static final Logger logger = LoggerFactory.getLogger(CartService.class);
 	
 	public CartBean findCartById(Long id) {
 		
@@ -77,17 +81,22 @@ public class CartService {
 	public boolean add(String account,
 						Long product_id,
 						int quantity) {
+		
+		boolean flag = false;
 		CartBean cartBean = cartDAO.findCartByProductId(product_id);
 		if(cartBean!=null && this.checkQuqntity(quantity, product_id)==true) {
 			quantity = cartBean.getQuantity()+quantity;
 			cartDAO.update(quantity, product_id);
-			return true;
+			flag = true;
+			return flag;
 		}else {
 		if(this.checkQuqntity(quantity, product_id)==true) {
 			cartDAO.add(account, product_id, quantity);
-			return true;
+			flag = true;
+			return flag;
 		}else {
-			return false;
+			flag = false;
+			return flag;
 		}
 	}
 	}

@@ -16,7 +16,7 @@ public class FileService {
 	        String image="";
 	        try {
 	            byte[] bytes = file.getBytes();
-	            Path path = Paths.get("C:\\Users\\aa468\\Documents\\GitHub\\Shop\\Shop\\src\\main\\resources\\static\\images\\" + fileName);
+	            Path path = Paths.get("C:/Users/aa468/Github_Shop/Shop/src/main/resources/static/images/" + fileName);
 	            Files.write(path, bytes);
 	            image = "/images/"+fileName;
 

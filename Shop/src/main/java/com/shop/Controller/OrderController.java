@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.shop.Model.MemberBean;
+import com.shop.Service.MemberService;
 import com.shop.Service.OrderService;
 
 @Controller
@@ -17,12 +17,14 @@ public class OrderController {
 	
 	@Autowired
 	OrderService orderService;
+	@Autowired
+	MemberService memberService;
 	
 	@PostMapping("/orderAdd")
-	public String orderAdd(@RequestParam("valCartId") List<Long> cart_id, HttpSession session) {
+	public String orderAdd(@RequestParam("valCartId") List<Long> cart_id, 
+													  HttpSession session) {
 		
-		MemberBean memberBean = (MemberBean) session.getAttribute("user");
-		String account = memberBean.getAccount();
+		String account = memberService.getUserName();
 		
 		orderService.addOrder(account, cart_id);
 		

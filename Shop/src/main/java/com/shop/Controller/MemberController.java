@@ -2,6 +2,8 @@ package com.shop.Controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,11 +20,14 @@ public class MemberController {
     private MemberService memberService;
 
     private MemberBean memberBean = new MemberBean();
+    
+    private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
 
-    @PostMapping("/login")
-    public String login(@RequestParam("valUser") String account,
-                        @RequestParam("valPwd") String password, HttpSession session) {
+//	  已改用Spring Security
+//    @PostMapping("/doLogin")
+//    public String login(@RequestParam("valAcc") String account,
+//                        @RequestParam("valPwd") String password, HttpSession session) {
 //        memberBean = memberDAO.findByAccountAndPassword(account, password);
 //        if (memberBean != null) {
 //            session.setAttribute("id", memberBean);
@@ -30,15 +35,15 @@ public class MemberController {
 //        } else {
 //            return "redirect:/login";
 //        }
-        memberBean = memberService.findByAccountAndPassword(account, password);
-        if(memberBean != null) {
-        	//session.setAttribute("user", memberBean);
-        	memberService.login(memberBean);
-        	return "redirect:/";
-        }else {
-        	return "redirect:/login";
-        }
-    }
+//        memberBean = memberService.findByAccountAndPassword(account, password);
+//        if(memberBean != null) {
+//        	//session.setAttribute("user", memberBean);
+//        	memberService.login(memberBean);
+//        	return "redirect:/";
+//        }else {
+//        	return "redirect:/login";
+//        }
+//    }
 
     @PostMapping("/register")
     public String register(@RequestParam("valUser") String account,
@@ -62,6 +67,7 @@ public class MemberController {
                                @RequestParam("valEmail") String email,
                                HttpSession session){
         //memberDAO.update(password, name, addr, tel, email,account);
+
     	memberService.update(password, name, addr, tel, email , account);
     	
         //memberBean = memberDAO.findByAccount(account);
@@ -75,6 +81,7 @@ public class MemberController {
     public boolean checkAccount(@RequestParam("account") String account){
     	boolean isExist = false;
     	//Ajax傳回來資料命名為data
+
     	if(memberService.findByAccount(account)!=null) {
     		isExist = true;
     	}
