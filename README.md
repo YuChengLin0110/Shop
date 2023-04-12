@@ -7,6 +7,7 @@ Spring boot、Spring Security
 MySQL  
 Hibernate、JPQL
 
+功能簡介  
 註冊
 以AJAX方式驗證帳號是否已存在  
 密碼經BCrypt加密後存入資料庫
