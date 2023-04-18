@@ -43,7 +43,7 @@ public class WebController {
 	private static final Logger logger = LoggerFactory.getLogger(WebController.class);
 
 	@RequestMapping("/")
-	public String index(Model model) {
+	public String index() {
 //		boolean isLogin;
 //		if (session.getAttribute("user") != null) {
 //			isLogin = true;
@@ -80,7 +80,7 @@ public class WebController {
 //	}
 
 	@GetMapping("/member")
-	public String member(HttpSession session, Model model) {
+	public String member(Model model) {
 		
 		String userName = memberService.getUserName();
 		MemberBean detail = memberService.findByAccount(userName);
@@ -89,7 +89,7 @@ public class WebController {
 	}
 
 	@GetMapping("/memberUpdate")
-	public String memberUpdate(HttpSession session, Model model) {
+	public String memberUpdate(Model model) {
 		String userName = memberService.getUserName();
 		MemberBean detail = memberService.findByAccount(userName);
 		model.addAttribute("detail", detail);
@@ -172,7 +172,7 @@ public class WebController {
 	}
 	
 	@GetMapping("/orderDetail/{order_number}")
-	public String orderDetail(@PathVariable String order_number, HttpSession session, Model model) {
+	public String orderDetail(@PathVariable String order_number, Model model) {
 		String userName = memberService.getUserName();
 		List<OrderDetailVO> orderDetailVO = orderService.findOrderDetailVOByOrderNumber(userName, order_number);
 		model.addAttribute("orderDetailVO",orderDetailVO);
@@ -227,7 +227,5 @@ public class WebController {
 		}
 		
 	}
-	
-	
 	
 }
