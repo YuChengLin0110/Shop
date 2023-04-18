@@ -4,8 +4,7 @@
 Java  
 Thymeleaf、JavaScript、Jquery、AJAX  
 Spring boot、Spring Security  
-MySQL  
-Hibernate、JPQL
+MySQL、Redis、Hibernate、JPQL
 
 功能簡介  
 註冊
