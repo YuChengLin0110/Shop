@@ -4,7 +4,8 @@
 Java  
 Thymeleaf、JavaScript、Jquery、AJAX  
 Spring boot、Spring Security  
-MySQL、Redis、Hibernate、JPQL
+MySQL、Redis、Hibernate、JPQL  
+綠界金流Ecpay
 
 功能簡介  
 註冊
