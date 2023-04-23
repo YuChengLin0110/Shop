@@ -22,11 +22,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure (HttpSecurity http) throws Exception{
-		
+//		http
+//		.authorizeRequests().anyRequest().permitAll()
+//		.and()
+//		.formLogin()
+//		.loginProcessingUrl("/doLogin")
+//		.loginPage("/login")
+//		.and()
+//		.csrf().disable();
 		http
 		.authorizeRequests()
 		.antMatchers("/login","/register").anonymous()
-		.antMatchers("/","/product","/checkAccount","/css/**", "/js/**","/fonts/**","/images/**","/sass/**")
+		.antMatchers("/","/product","/checkAccount","/ecpayCheckOut","/ecpayReturn","/css/**", "/js/**","/fonts/**","/images/**","/sass/**")
 		.permitAll()
 		.anyRequest().authenticated()
 		.and()
@@ -41,7 +48,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.logoutSuccessUrl("/")
 		.and()
 		.csrf()
-		.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+		.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+		.ignoringAntMatchers("/ecpayCheckOut","/ecpayReturn");
 	}
 	
 	@Bean

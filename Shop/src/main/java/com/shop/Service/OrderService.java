@@ -63,6 +63,10 @@ public class OrderService {
 		return orderDAO.findOrderDetailVOByOrderNumber(account, order_number);
 	}
 	
+	public OrderVO findOrderByOrderNumber(String order_number) {
+		return orderDAO.findOrderVOByOrderNumber(order_number);
+	}
+	
 	public Map<String,List<OrderBean>> creatOrderMap(List<OrderBean> orderBeanList){
 		Map<String, List<OrderBean>> orderMap = new HashMap<String,List<OrderBean>>();
 		
@@ -129,15 +133,15 @@ public class OrderService {
 				Long c_id = orderData.getCart_id();
 				
 				
-				this.addOrder(orderNumber, account, price, createDate,c_id);
+				this.addOrder(orderNumber, account, price, createDate,c_id, 0);
 			}
 		}
 		
 		
 	}
 	
-	public void addOrder(String orderNumber,String account,int productPrice,String createDate,Long cart_id) {
-		orderDAO.add(orderNumber, account, productPrice, createDate, cart_id);
+	public void addOrder(String orderNumber,String account,int productPrice,String createDate,Long cart_id, int status) {
+		orderDAO.add(orderNumber, account, productPrice, createDate, cart_id, status);
 		
 	}
 	
@@ -149,6 +153,10 @@ public class OrderService {
 	
 	public List<OrderAddDataVO> prepareOrderAddDataVO(List<Long> cart_id, String account){
 		return orderDAO.prepareAddOrderData(cart_id, account);
+	}
+	
+	public void updateOrderStatus(int rtnCode, String orderNumber) {
+		orderDAO.updateOrderStatus(rtnCode, orderNumber);
 	}
 	
 	

@@ -24,6 +24,8 @@ public class OrderBean {
 	private Long cart_id;
 	
 	private String create_date;
+	
+	private int status;
 
 
 
@@ -75,6 +77,14 @@ public class OrderBean {
 
 	public void setCart_id(Long cart_id) {
 		this.cart_id = cart_id;
+	}
+	
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	
 	

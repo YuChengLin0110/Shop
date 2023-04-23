@@ -33,6 +33,7 @@
                         <th class="sort"><a class="logo" href=""><strong>訂單編號</strong></a></th>
                         <th class="sort"><a class="logo" href=""><strong>總價</strong></a></th>
                         <th class="sort"><a class="logo" href=""><strong>日期</strong></a></th>
+                        <th class="sort"><a class="logo" href=""><strong>狀態</strong></a></th>
                     </tr>
                     </thead>
               <!--       <tbody th:each="orderMap:${orderMap}"> --> 
@@ -42,7 +43,8 @@
                     <td style="vertical-align: middle;" width="120"><a class="logo" id="orderNumber" th:href="@{'/orderDetail/'+${orderVO.order_number}}"><strong th:text="${orderVO.order_number}" ></strong></a></td>
 
                     <td th:text="${orderVO.price}" style="vertical-align: middle;" width="70"></td>
-                        <td th:text="${orderVO.create_date}" style="vertical-align: middle;" width="50"></td>
+                    <td th:text="${orderVO.create_date}" style="vertical-align: middle;" width="50"></td>
+                    <td th:text="${orderVO.status == 1? '已付款':'未付款'}" style="vertical-align: middle;" width="50"></td>
 				 
                     </tr>
 					

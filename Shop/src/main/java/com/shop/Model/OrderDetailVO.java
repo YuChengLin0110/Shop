@@ -8,14 +8,16 @@ public class OrderDetailVO {
 	private int price; 
 	private int quantity;
 	private String create_date;
+	private int status;
 	
-	public OrderDetailVO(String order_number,String name, String image, int price, int quantity, String create_date) {
+	public OrderDetailVO(String order_number,String name, String image, int price, int quantity, String create_date, int status) {
 		this.order_number = order_number;
 		this.name = name;
 		this.image = image;
 		this.price = price;
 		this.quantity = quantity;
 		this.create_date = create_date;
+		this.status = status;
 	}
 	public String getOrder_number() {
 		return order_number;
@@ -52,6 +54,13 @@ public class OrderDetailVO {
 	}
 	public void setCreate_date(String create_date) {
 		this.create_date = create_date;
+	}
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	
 	

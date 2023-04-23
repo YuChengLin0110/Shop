@@ -65,7 +65,7 @@ public class WebController {
 		return "register";
 	}
 
-
+//  改用Spring Security管理
 //	@GetMapping("/logout")
 //	public String logout() {
 //		
@@ -158,13 +158,13 @@ public class WebController {
 	}
 	
 	@GetMapping("/order")
-	public String order(HttpSession session, Model model) {
+	public String order(Model model) {
 		//MemberBean memberBean = (MemberBean) session.getAttribute("user");
 		String userName = memberService.getUserName();
 //		List<OrderBean> orderBeanList = orderService.findOrderByAccount(account);
 //		Map<String, List<OrderBean>> orderMap = orderService.creatOrderMap(orderBeanList);
-//		
 //		model.addAttribute("orderMap",orderMap);
+		
 		List<OrderVO> orderVO = orderService.findOrderVOByAccount(userName);
 		model.addAttribute("orderVO",orderVO);
 		
@@ -179,7 +179,6 @@ public class WebController {
 		
 		return "orderDetail";
 	}
-	
 	
 	@ModelAttribute("isLogin")
 	public boolean isLogin() {

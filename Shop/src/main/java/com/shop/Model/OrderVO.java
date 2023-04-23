@@ -7,11 +7,13 @@ public class OrderVO {
 	// sum要用Long去接收
 	private Long price;
 	private String create_date;
+	private int status;
 	
-	public OrderVO(String order_number, Long price, String create_date) {
+	public OrderVO(String order_number, Long price, String create_date, int status) {
 		this.order_number = order_number;
 		this.price = price;
 		this.create_date = create_date;
+		this.status = status;
 	}
 	
 	public String getCreate_date() {
@@ -31,6 +33,13 @@ public class OrderVO {
 	}
 	public void setPrice(Long price) {
 		this.price = price;
+	}
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	
 	

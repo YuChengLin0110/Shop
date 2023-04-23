@@ -6,9 +6,12 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.shop.Service.EcpayService;
 import com.shop.Service.MemberService;
 import com.shop.Service.OrderService;
 
@@ -19,6 +22,8 @@ public class OrderController {
 	OrderService orderService;
 	@Autowired
 	MemberService memberService;
+	@Autowired
+	EcpayService ecpayService;
 	
 	@PostMapping("/orderAdd")
 	public String orderAdd(@RequestParam("valCartId") List<Long> cart_id, 
@@ -31,5 +36,6 @@ public class OrderController {
 		return "redirect:/order";
 		
 	}
+	
 
 }

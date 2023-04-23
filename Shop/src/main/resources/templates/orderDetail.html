@@ -25,7 +25,7 @@
             </header>
             <br>
             <div class="table-wrapper">
-
+				<form method="post" th:action="@{/ecpayCheckOut}" >
                 <table class="alt">
                     <thead>
                     <tr>
@@ -34,12 +34,11 @@
                         <th class="sort"><a class="logo" href=""><strong>購買單價</strong></a></th>
                         <th class="sort"><a class="logo" href=""><strong>數量</strong></a></th>
                         <th class="sort"><a class="logo" href=""><strong>日期</strong></a></th>
+                        <th class="sort"><a class="logo" href=""><strong>狀態</strong></a></th>
                     </tr>
                     </thead>
-              
 
-                    
-                    <tr th:each="orderDetailVO:${orderDetailVO}">
+                    <tr th:each="orderDetailVO, iterStat:${orderDetailVO}">
                     <td style="vertical-align: middle;" width="120"><a class="logo" id="orderNumber" ><strong th:text="${orderDetailVO.order_number}" ></strong></a></td>
 					
 					<td style="width: 123px; height: 124px;"><a
@@ -47,12 +46,13 @@
                             alt="productIMG" height="100" /></a></td>
                     <td th:text="${orderDetailVO.price}" style="vertical-align: middle;" width="70"></td>
                     <td th:text="${orderDetailVO.quantity}" style="vertical-align: middle;" width="70"></td>
-                        <td th:text="${orderDetailVO.create_date}" style="vertical-align: middle;" width="50"></td>
-				 
+                    <td th:text="${orderDetailVO.create_date}" style="vertical-align: middle;" width="50"></td>
+                    <td th:text="${orderDetailVO.status == 1? '已付款':'未付款'}" style="vertical-align: middle;" width="50"></td>
+				 	<td th:if="${iterStat.first}" style="display: none;"><input type="hidden" name="orderNumber" th:value="${orderDetailVO.order_number}"></td>
                     </tr>
-					
-                    </tbody>
                 </table>
+                	<input type="submit" value="付款">
+                </form>
             </div>
         </div>
     </div>
