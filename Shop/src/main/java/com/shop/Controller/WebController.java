@@ -175,7 +175,9 @@ public class WebController {
 	public String orderDetail(@PathVariable String order_number, Model model) {
 		String userName = memberService.getUserName();
 		List<OrderDetailVO> orderDetailVO = orderService.findOrderDetailVOByOrderNumber(userName, order_number);
+		int status = orderDetailVO.get(0).getStatus();
 		model.addAttribute("orderDetailVO",orderDetailVO);
+		model.addAttribute("status",status);
 		
 		return "orderDetail";
 	}

@@ -51,7 +51,7 @@
 				 	<td th:if="${iterStat.first}" style="display: none;"><input type="hidden" name="orderNumber" th:value="${orderDetailVO.order_number}"></td>
                     </tr>
                 </table>
-                	<input type="submit" value="付款">
+                	<input type="submit" th:value="${status == 1 ? '已付款':'付款'}" th:disabled="${status == 1}">
                 </form>
             </div>
         </div>

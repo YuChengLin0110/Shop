@@ -30,8 +30,8 @@ public class EcpayService {
 		obj.setMerchantTradeDate("2023/05/01 10:05:23");
 		obj.setTradeDesc("test Description");
 		obj.setItemName("TestItem");
-		obj.setReturnURL("https://974b-124-6-31-31.ngrok-free.app/ecpayReturn");
-		obj.setClientBackURL("https://974b-124-6-31-31.ngrok-free.app/order");
+		obj.setReturnURL("Domain/ecpayReturn");
+		obj.setClientBackURL("Domain/order");
 		obj.setNeedExtraPaidInfo("N");
 		
 		String form = all.aioCheckOut(obj, null);
