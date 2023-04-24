@@ -25,3 +25,6 @@ CSRF驗證
 
 加入訂單
 ![image](demonstration/addOrder.gif)
+
+結帳串接綠界金流ecpay
+![image](demonstration/checkout.gif)
