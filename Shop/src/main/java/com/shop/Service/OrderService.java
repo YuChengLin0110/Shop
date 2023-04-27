@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.shop.DAO.CartDAO;
 import com.shop.DAO.OrderDAO;
+import com.shop.DAO.OrderVoMapper;
 import com.shop.Model.OrderAddDataVO;
 import com.shop.Model.OrderBean;
 import com.shop.Model.OrderDetailVO;
@@ -27,6 +28,9 @@ public class OrderService {
 	
 	@Autowired
 	CartDAO cartDAO;
+	
+	@Autowired
+	OrderVoMapper orderVoMapper;
 
 	@Autowired
 	ProductService productService;
@@ -56,15 +60,15 @@ public class OrderService {
 	}
 	
 	public List<OrderVO> findOrderVOByAccount(String account){
-		return orderDAO.findOrderVOByAccount(account);
+		return orderVoMapper.findOrderVoByAccount(account);
 	}
 	
 	public List<OrderDetailVO> findOrderDetailVOByOrderNumber(String account, String order_number){
-		return orderDAO.findOrderDetailVOByOrderNumber(account, order_number);
+		return orderVoMapper.findOrderDetailVoByOrderNumber(account, order_number);
 	}
 	
 	public OrderVO findOrderByOrderNumber(String order_number) {
-		return orderDAO.findOrderVOByOrderNumber(order_number);
+		return orderVoMapper.findOrderVoByOrderNumber(order_number);
 	}
 	
 	public Map<String,List<OrderBean>> creatOrderMap(List<OrderBean> orderBeanList){
@@ -152,7 +156,7 @@ public class OrderService {
 	}
 	
 	public List<OrderAddDataVO> prepareOrderAddDataVO(List<Long> cart_id, String account){
-		return orderDAO.prepareAddOrderData(cart_id, account);
+		return orderVoMapper.prepareAddOrderData(cart_id, account);
 	}
 	
 	public void updateOrderStatus(int rtnCode, String orderNumber) {

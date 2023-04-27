@@ -138,7 +138,7 @@ public class WebController {
 	}
 	
 	@GetMapping("/cart")
-	public String cart(HttpSession session, Model model) {
+	public String cart(Model model) {
 //		MemberBean memberBean =  (MemberBean) session.getAttribute("user");
 //		String account = memberBean.getAccount();
 		

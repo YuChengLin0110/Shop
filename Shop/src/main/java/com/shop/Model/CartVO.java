@@ -8,13 +8,13 @@ public class CartVO {
 
 	private int price, cart_Quantity;
 
-	public CartVO(Long cart_id, String image, String name, String spec, int price, int cart_Quantity) {
+	public CartVO(Long cart_id, String image, String name, String spec, int price, int quantity) {
 		this.cart_id = cart_id;
 		this.image = image;
 		this.name = name;
 		this.spec = spec;
 		this.price = price;
-		this.cart_Quantity = cart_Quantity;
+		this.cart_Quantity = quantity;
 
 	}
 

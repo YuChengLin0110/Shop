@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.shop.DAO.CartDAO;
+import com.shop.DAO.CartVoMapper;
 import com.shop.Model.CartBean;
 import com.shop.Model.CartVO;
 
@@ -16,6 +17,8 @@ public class CartService {
 
 	@Autowired 
 	CartDAO cartDAO;
+	@Autowired
+	CartVoMapper cartVoMapper;
 	@Autowired 
 	ProductService productService;
 	
@@ -48,9 +51,9 @@ public class CartService {
 	
 	public List<CartVO> findCartVOByAccount(String account) {
 		
-		List<CartVO> cartBean = cartDAO.findCartVOByAccount(account);
-		
-		
+		//List<CartVO> cartBean = cartDAO.findCartVOByAccount(account);
+		List<CartVO> cartBean = cartVoMapper.findcartVoByAccount(account);
+				
 		return cartBean;
 	}
 	
@@ -82,24 +85,24 @@ public class CartService {
 						Long product_id,
 						int quantity) {
 		
-		boolean flag = false;
+		
 		CartBean cartBean = cartDAO.findCartByProductId(product_id);
-		if(cartBean!=null && this.checkQuqntity(quantity, product_id)==true) {
+		if(cartBean!=null && this.checkQuantity(quantity, product_id)==true) {
 			quantity = cartBean.getQuantity()+quantity;
 			cartDAO.update(quantity, product_id);
-			flag = true;
-			return flag;
-		}else {
-		if(this.checkQuqntity(quantity, product_id)==true) {
+			
+			return true;
+			
+		}else if(cartBean==null && this.checkQuantity(quantity, product_id)==true){
+			
 			cartDAO.add(account, product_id, quantity);
-			flag = true;
-			return flag;
-		}else {
-			flag = false;
-			return flag;
+			return true;
+		
+		}else {	
+			return false;
 		}
 	}
-	}
+	
 	public void update(int quantity,
 					   Long id) {
 		
@@ -120,7 +123,7 @@ public class CartService {
 			Long pid = cartBean.getProduct_id();
 			int cartQuantity = cartBean.getQuantity();
 			
-			if(this.checkQuqntity(cartQuantity, pid)==true) {
+			if(this.checkQuantity(cartQuantity, pid)==true) {
 				int productQuantity = productService.findProductById(pid).getQuantity();
 				productService.productBuy(productQuantity - cartQuantity,pid);
 				cartDAO.buy(cid);
@@ -135,7 +138,7 @@ public class CartService {
 	}
 	
 	//檢查實際商品數量與購物車商品數量
-	public boolean checkQuqntity(int cartQuantity, Long product_id) {
+	public boolean checkQuantity(int cartQuantity, Long product_id) {
 		int productQuantity = productService.findProductById(product_id).getQuantity();
 		if(productQuantity >= cartQuantity) {
 			return true;

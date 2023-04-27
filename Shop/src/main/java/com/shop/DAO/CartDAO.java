@@ -28,11 +28,12 @@ public interface CartDAO extends JpaRepository<CartBean, Long>{
 
     @Query(value = "SELECT * FROM cart WHERE account=? AND bought = 0",nativeQuery = true)
     public List<CartBean> findCartByAccount(String account);
-    
-    @Query(value = " SELECT new com.shop.Model.CartVO(c.id AS cart_id, p.image AS image, p.name AS name, p.spec AS spec, p.price AS price, c.quantity AS quantity )"
-    			 + " FROM product AS p JOIN cart AS c ON p.id = c.product_id "
-    			 + " WHERE account=?1 AND bought = 0 ",nativeQuery = false)
-    public List<CartVO> findCartVOByAccount(String account);
+
+//	提出寫在CartVoMapper 改為使用MyBatis
+//    @Query(value = " SELECT new com.shop.Model.CartVO(c.id AS cart_id, p.image AS image, p.name AS name, p.spec AS spec, p.price AS price, c.quantity AS quantity )"
+//    			 + " FROM product AS p JOIN cart AS c ON p.id = c.product_id "
+//    			 + " WHERE account=?1 AND bought = 0 ",nativeQuery = false)
+//    public List<CartVO> findCartVOByAccount(String account);
 
     @Modifying
     @Transactional
@@ -63,4 +64,3 @@ public interface CartDAO extends JpaRepository<CartBean, Long>{
     public CartBean findCartByProductId(Long product_id);
     
 }
-
