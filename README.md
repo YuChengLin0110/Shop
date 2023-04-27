@@ -4,7 +4,7 @@
 Java  
 Thymeleaf、JavaScript、Jquery、AJAX  
 Spring boot、Spring Security  
-MySQL、Redis、Hibernate、JPQL、MyBatis
+MySQL、Redis、Hibernate、JPQL、MyBatis  
 綠界金流Ecpay
 
 功能簡介  
