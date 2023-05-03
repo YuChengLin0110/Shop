@@ -19,7 +19,7 @@ public interface OrderVoMapper {
 	
 	@Select("SELECT o.order_number AS order_number,SUM((o.product_price)*c.quantity) AS price, o.create_date AS create_date, o.status AS status "
 			+ "FROM c_order AS o JOIN cart AS c ON o.cart_id = c.id JOIN product AS p ON c.product_id = p.id "
-			+ "WHERE o.order_number=?1 GROUP BY o.order_number")
+			+ "WHERE o.order_number=#{orderNumber} GROUP BY o.order_number")
 	public OrderVO findOrderVoByOrderNumber(String orderNumber);
 	
 	@Select("SELECT o.order_number AS order_number,p.name AS name, p.image AS image, o.product_price AS price, c.quantity AS quantity, o.create_date AS create_date, o.status AS status "
