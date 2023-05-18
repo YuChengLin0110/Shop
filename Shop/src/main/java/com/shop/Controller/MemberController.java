@@ -60,7 +60,6 @@ public class MemberController {
 
     @PostMapping("/memberUpdate")
     public String memberUpdate(@RequestParam("valUser") String account,
-                               @RequestParam("valPwd") String password,
                                @RequestParam("valName") String name,
                                @RequestParam("valAddr") String addr,
                                @RequestParam("valTel") String tel,
@@ -68,7 +67,7 @@ public class MemberController {
                                HttpSession session){
         //memberDAO.update(password, name, addr, tel, email,account);
 
-    	memberService.update(password, name, addr, tel, email , account);
+    	memberService.update(name, addr, tel, email , account);
     	
         //memberBean = memberDAO.findByAccount(account);
     	memberBean = memberService.findByAccount(account);

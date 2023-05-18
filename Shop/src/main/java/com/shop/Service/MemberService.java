@@ -81,9 +81,9 @@ public class MemberService implements UserDetailsService {
 		}
 	}
 
-	public void update(String password, String name, String addr, String tel, String email, String account) {
+	public void update(String name, String addr, String tel, String email, String account) {
 
-		memberDAO.update(password, name, addr, tel, email, account);
+		memberDAO.update(name, addr, tel, email, account);
 	}
 
 	public MemberBean findByAccountAndPassword(String account, String password) {

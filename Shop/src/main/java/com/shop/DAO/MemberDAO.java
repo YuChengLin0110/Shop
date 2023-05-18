@@ -24,7 +24,7 @@ public interface MemberDAO extends JpaRepository<MemberBean,Long> {
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE member SET password=?1, name=?2, addr=?3, tel=?4, email=?5 WHERE account=?6",nativeQuery = true)
-    void update(String password, String name,String addr,String tel,String email,String account);
+    @Query(value = "UPDATE member SET name=?1, addr=?2, tel=?3, email=?4 WHERE account=?5",nativeQuery = true)
+    void update(String name,String addr,String tel,String email,String account);
 
 }

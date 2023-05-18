@@ -32,16 +32,7 @@
                             帳號:<input style="background-color: #ffe6ff;" type="text"
                                       id="acc" name="valUser" readonly="true" th:value="*{account}"/>
                         </div>
-                        <div class="col-12 col-12-xsmall">
-                            密碼(4~12個英文數字):<input type="password" id="pwd" name="valPwd"
-                                              minlength="4" maxlength="12" th:value="*{password}"
-                            pattern="^[A-Za-z0-9]{4,12}$" required />
-                        </div>
-                        <div class="col-12 col-12-xsmall">
-                            密碼確認(4~12個英文數字):<input type="password" id="pwdC" name="valPwdCheck"
-                                                minlength="4" maxlength="12" th:value="*{password}"
-                            pattern="^[A-Za-z0-9]{4,12}$" required />
-                        </div>
+                        
                         <div class="col-12 col-12-xsmall">
                             姓名:<input type="text" id="name" name="valName"
                                       th:value="*{name}" required />
